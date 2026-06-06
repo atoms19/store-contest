@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	 <link rel="stylesheet" href="/src/style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>contest</title>
+  </head>
+  <body>
+	
+
+	 <nav class="nav-bar">
+
+		<div class="nav-left">
+		  <div class="nav-logo">
+			 <a>LOGO</a>
+		  </div>
+
+
+		  <div class="nav-search-bar">
+		   <div class="search-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+			 </div>
+		  <input placeholder="search bar" id="search-input"/>
+		  </div>
+	  </div>
+
+	  <div class="nav-right">
+		   <ul class="nav-link-list">
+				<li>
+				  <a href="#">about us</a>
+				</li>
+				<li>
+				  <a href="#">contact</a>
+				</li>
+				<li>
+				  <a href="#">signup</a>
+				</li>
+				<li>
+				  <a href="#">login</a>
+				</li>
+			 </ul>
+	  </div>	  
+	 </nav>
+
+    <section class="app-container">
+        <aside class="section-left">
+			 <span>total items <span id="total-item-counter">0</span> </span>
+		  </aside>
+
+		  <main class="section-main">
+
+          <div class="card-container">
+			 <!-- template for card-->
+
+			 <!-- -->
+         </div>
+
+
+			 <template class="item-card-template">
+				<div class="item-card">
+				  <img src="#" alt="item-image" class="item-card-image"/>
+				  <div class="item-card-details">
+                  <span class="item-card-name"></span>
+                  <span class="item-card-price"></span>
+				  </div>
+				  <button class="item-card-action-button">
+					 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+				  </button>
+				</div>
+			 </template>
+
+
+
+		  </main>
+
+		  <aside class="section-right">
+			 <span>added items <span id="added-items-counter">0</span>
+		  <div class="added-items-list">
+			 <ul>
+
+			
+			 </ul>
+        	<!-- template for added items -->
+				<template id="list-item-template">
+				  <div>	 
+				  <li class="item">
+					 <div>
+						<span class="item-name"></span>
+						<span class="item-price"></span>
+					 </div>
+					 <div class="qty-counter">
+						<button class="qty-decrement">-</button>
+						<span class="qty-counter">0</span>
+						<button class="qty-increment">+</button>
+					 </div>
+				  </li>
+
+				  </div>
+
+					 <button class="remove-item-button">
+						X
+					 </button>
+				</template>
+				<!--- --->
+		  </div>
+		  <span> total price <span id="total-price-counter"></span> </span>
+ </aside>
+	 </section>
+
+
+
+
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
