@@ -18,10 +18,9 @@ let items = [
 
 class Order {
   constructor(item,qty){
-	 this.qty=0;
+	 this.qty=qty;
 	 this.item=item
   }
-
 }
 
 let cart = [
@@ -36,16 +35,38 @@ const loadCart =()=>{
   const templateItem = document.querySelector('#list-item-template');
   const container = document.querySelector('.added-items-list ul') 
   container.innerHTML='';
-  cart.forEach(item=>{ 
+  cart.forEach(order=>{ 
   const content = templateItem.content.cloneNode(true);
   const itemName = content.querySelector('.item-name');
   const itemPrice= content.querySelector('.item-price');
   const removeItemButton = content.querySelector('.remove-item-button');
+  const incrementBtn =content.querySelector('.qty-increment');
+  const decremetnBtn =content.querySelector('.qty-decrement');
 
+
+  const qty=content.querySelector('.qty-counter-b');
+  qty.textContent=order.qty;
+
+  displayCartCount()
+
+  incrementBtn.addEventListener('click',()=>{
+     order.qty++;
+	 loadCart()
+  })
+
+
+
+  decremetnBtn.addEventListener('click',()=>{
+	 if (order.qty<=0) return
+     order.qty--;
+	 loadCart()
+  })
+
+ const item = order.item;
 
   removeItemButton.addEventListener('click',()=>{
-		cart=cart.filter(it=>it.id!=item.id);
-	   items.push(item);
+		cart=cart.filter(it=>it.item.id!=item.id);
+	   items.push(order.item);
 	 loadItems(items);
 	   console.log(cart)
 	   loadCart()
@@ -66,8 +87,10 @@ const displayCount =()=>{
 const displayCartCount = ()=>{
    const priceCounter = document.querySelector('#total-price-counter');
   const itemCounter = document.querySelector('#added-items-counter');
-   itemCounter.textContent = cart.length;
-   priceCounter.textContent = cart.reduce((sum,item)=>sum+item.price,0);
+
+
+   itemCounter.textContent = cart.reduce((sum,order)=>sum+order.qty,0);
+   priceCounter.textContent = cart.reduce((sum,order)=>sum+((order.item.price)*(order.qty)),0);
 
 }
 
@@ -101,12 +124,12 @@ const loadItems =(iter)=>{
 
 
 	 itemButton.addEventListener('click',(e)=>{
-		 cart.push(item);
+		 cart.push(new Order(item,1));
 		items=items.filter(it=>it.id != item.id);
        loadCart(); 	
+		loadItems(items);
 		 displayCount();
 		displayCartCount();
-		loadItems(items);
       
 	 });
 
